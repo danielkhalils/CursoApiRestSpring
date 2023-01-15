@@ -8,6 +8,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ public class IndexController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	//Recebendo dados com o método GET
 	@GetMapping(value = "/{id}/relatoriopdf", produces = "application/pdf")
 	private ResponseEntity<Usuario> relatorio(@PathVariable (value = "id") Long id){
 		
@@ -54,6 +56,7 @@ public class IndexController {
 		return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
 	}
 	
+	//Cadastrando dados com o método POST
 	@PostMapping(value = "/", produces = "application/json")
 	public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario){
 		
@@ -70,6 +73,7 @@ public class IndexController {
 		return new ResponseEntity("id user: " + iduser + "id venda: " + idvenda, HttpStatus.OK);
 	}
 	
+	//Atualizando dados com o método PUT
 	@PutMapping(value = "/", produces = "application/json")
 	public ResponseEntity<Usuario> atualizar(@RequestBody Usuario usuario){
 		
@@ -87,5 +91,18 @@ public class IndexController {
 		return new ResponseEntity("Venda cadastrada", HttpStatus.OK);
 	}
 	
+	//Deletando dados com o método DELETE
+	
+	@DeleteMapping(value = "/{id}", produces = "application/text")
+	public String delete(@PathVariable("id") Long id){
+		usuarioRepository.deleteById(id);
+		return "ok";
+	}
+	
+	@DeleteMapping(value = "/{id}/venda", produces = "application/text")
+	public String deleteVenda(@PathVariable("id") Long id){
+		usuarioRepository.deleteById(id);
+		return "ok";
+	}
 	
 }
