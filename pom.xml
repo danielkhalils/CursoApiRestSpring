@@ -11,7 +11,7 @@
 	<groupId>io.github.danielkhalils</groupId>
 	<artifactId>cursospringrestapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>cursospringrestapi</name>
 	<description>Curso API REST com Spring Boot</description>
 	<properties>
