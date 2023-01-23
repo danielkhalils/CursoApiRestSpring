@@ -1,10 +1,8 @@
 package io.github.danielkhalils.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.danielkhalils.model.Usuario;
@@ -70,7 +67,7 @@ public class IndexController {
 	public ResponseEntity cadastrarVenda(@PathVariable Long iduser, 
 										 @PathVariable Long idvenda) {
 		
-		return new ResponseEntity("id user: " + iduser + "id venda: " + idvenda, HttpStatus.OK);
+		return new ResponseEntity<>("id user: " + iduser + "id venda: " + idvenda, HttpStatus.OK);
 	}
 	
 	//Atualizando dados com o método PUT
@@ -88,7 +85,7 @@ public class IndexController {
 		
 		/*Usuario atualizarUsuario = usuarioRepository.save(usuario);*/
 		
-		return new ResponseEntity("Venda cadastrada", HttpStatus.OK);
+		return new ResponseEntity<>("Venda cadastrada", HttpStatus.OK);
 	}
 	
 	//Deletando dados com o método DELETE
